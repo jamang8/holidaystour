@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1e7a90;
+        }
+        .container {
+            text-align: center;
+            max-width: 90%;
+        }
+        .container img {
+            max-width: 100%;
+            height: 450px;
+            border-radius: 30px;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-button img {
+            width: 44px;
+            height: 44px;
+        }
+        .popup {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 14px;
+            display: none;
+            animation: fadeInOut 5s ease-in-out;
+        }
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(-20px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="/gambar.jpg" alt="Gambar Utama">
+    </div>
+    <a href="https://wa.me/6281234567890" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+        Book Now
+    </a>
+    
+    <div id="popup" class="popup"></div>
+    
+    <script>
+        fetch('https://geolocation-db.com/json/')
+          .then(response => response.json())
+          .then(data => {
+            if (data.country_code === 'ID') {
+                alert('Maaf, Anda tidak diizinkan masuk ke dalam website ini.');
+                window.location.href = 'https://www.google.com';
+            }
+          })
+          .catch(error => console.error('Error mendapatkan data IP:', error));
+        
+        const messages = [
+            "Dika telah membeli Produk A dengan harga 1000, 15 detik yang lalu",
+            "Siti telah membeli Produk B dengan harga 2000, 30 detik yang lalu",
+            "Andi telah membeli Produk C dengan harga 3000, 45 detik yang lalu",
+            "Budi telah membeli Produk D dengan harga 4000, 60 detik yang lalu",
+            "Rina telah membeli Produk E dengan harga 5000, 75 detik yang lalu"
+        ];
+        let index = 0;
+
+        function showPopup() {
+            let popup = document.getElementById("popup");
+            popup.innerText = messages[index];
+            popup.style.display = "block";
+            setTimeout(() => {
+                popup.style.display = "none";
+            }, 5000);
+            index = (index + 1) % messages.length;
+        }
+
+        setInterval(showPopup, 5000);
+    </script>
+</body>
+</html>
