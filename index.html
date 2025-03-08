@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
+    <title>HOLIDAYS TOUR AND TRAVELS</title>
     <style>
         body {
             margin: 0;
@@ -25,7 +25,7 @@
         }
         .whatsapp-button {
             position: fixed;
-            bottom: 20px;
+            bottom: 29px;
             right: 20px;
             background-color: #25d366;
             color: white;
@@ -84,18 +84,18 @@
           .then(response => response.json())
           .then(data => {
             if (data.country_code === 'ID') {
-                alert('Maaf, Anda tidak diizinkan masuk ke dalam website ini.');
+                alert('SORRY');
                 window.location.href = 'https://www.google.com';
             }
           })
           .catch(error => console.error('Error mendapatkan data IP:', error));
         
         const messages = [
-            "Dika telah membeli Produk A dengan harga 1000, 15 detik yang lalu",
-            "Siti telah membeli Produk B dengan harga 2000, 30 detik yang lalu",
-            "Andi telah membeli Produk C dengan harga 3000, 45 detik yang lalu",
-            "Budi telah membeli Produk D dengan harga 4000, 60 detik yang lalu",
-            "Rina telah membeli Produk E dengan harga 5000, 75 detik yang lalu"
+            "Mohd Hairudin has purchased a ticket for RM 2,796, 15 seconds ago",
+            "Mahyudin Rizan has purchased a ticket for RM 1,309, 30 seconds ago",
+            "Jamalludin bin Bujang has purchased a ticket for RM 3,000, 45 seconds ago",
+            "Shakilawati Salleh has purchased a ticket for RM 1,545, 60 seconds ago",
+            "Krishnan Sengodanadar has purchased a ticket for RM 1,360, 75 seconds ago"
         ];
         let index = 0;
 
@@ -109,7 +109,7 @@
             index = (index + 1) % messages.length;
         }
 
-        setInterval(showPopup, 5000);
+        setInterval(showPopup, 10000);
     </script>
 </body>
 </html>
